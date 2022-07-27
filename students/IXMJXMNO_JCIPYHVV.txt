@@ -1,0 +1,20 @@
+{
+    "studentDetails": {
+        "firstName": "IXMJXMNO",
+        "lastName": "JCIPYHVV",
+        "fullName": "IXMJXMNO JCIPYHVV",
+        "id": 860694937
+    },
+    "subjectGrades": [
+        {
+            "subject": "INWIFLNE",
+            "avg": 40.666666666666664
+        }
+    ],
+    "totalAvg": 40.666666666666664,
+    "birthDate": "27/01/1939",
+    "age": 83,
+    "gender": "MALE",
+    "isGoodBehaviour": true,
+    "notes": null
+}
