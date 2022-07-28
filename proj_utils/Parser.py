@@ -60,7 +60,7 @@ class Parser:
         return False
 
     def create_text_file(self):
-        save_path = 'C:/Users/razm1/PycharmProjects/routeExercise/students'
+        save_path = 'C:/Users/razm1/PycharmProjects/routeExerciseWTesting/students'
         fullname = self.parse_output().studentDetails.fullName
         complete_path = os.path.join(save_path, fullname.replace(' ', '_') + ".txt")
 
