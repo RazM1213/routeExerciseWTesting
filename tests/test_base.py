@@ -8,7 +8,7 @@ from models.Input import Input
 from models.Output import Output
 from proj_utils.Parser import Parser
 from src.RabbitMqPublisher import RabbitMqPublisher
-from tests.test_model.TestInput import TestInput
+from tests.test_model.test_input import TestInput
 
 
 class TestBase:

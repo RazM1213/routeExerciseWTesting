@@ -1,15 +1,15 @@
 import os.path
-from models.Output import Output
-from proj_utils.ModelGenerator import ModelGenerator
-from src.RabbitMqPublisher import RabbitMqPublisher
+from models.output import Output
+from generators.model_generator import ModelGenerator
+from send_generated_input_script.rabbit_mq_publisher import RabbitMqPublisher
 from unittest import TestCase
-from tests.TestBase import TestBase
+from tests.test_base import TestBase
 
 
 class E2ETest(TestCase, TestBase):
 
     def setUp(self):
-        self.rabbitmq_publisher = RabbitMqPublisher(server=TestBase.PUBLISHER_CONFIGURE)
+        self.rabbitmq_publisher = RabbitMqPublisher()
         os.chdir(TestBase.STUDENTS_DIR_PATH)
         if os.path.exists(TestBase.STUDENTS_DIR_PATH):
             for file in os.listdir(TestBase.STUDENTS_DIR_PATH):
@@ -32,9 +32,9 @@ class E2ETest(TestCase, TestBase):
         self.assertEqual(output_model.gender, parsed_output.gender)
         self.assertEqual(output_model.isGoodBehaviour, parsed_output.isGoodBehaviour)
         self.assertEqual(output_model.age, input_model.age)
-        self.assertEqual(output_model.studentDetails['firstName'], input_model.studentDetails['firstName'])
-        self.assertEqual(output_model.studentDetails['lastName'], input_model.studentDetails['lastName'])
-        self.assertEqual(output_model.studentDetails['id'], input_model.studentDetails['id'])
+        self.assertEqual(output_model.studentDetails.firstName, input_model.studentDetails['firstName'])
+        self.assertEqual(output_model.studentDetails.lastName, input_model.studentDetails['lastName'])
+        self.assertEqual(output_model.studentDetails.id, input_model.studentDetails['id'])
 
     def test_text_file_saved_success(self):
         input_model = ModelGenerator.generate_input_model()
@@ -350,7 +350,3 @@ class E2ETest(TestCase, TestBase):
         TestBase.send_body(self.rabbitmq_publisher, valid_input_model)
 
         self.assertEqual(1, len(TestBase.get_docs(1)))
-
-
-
-
